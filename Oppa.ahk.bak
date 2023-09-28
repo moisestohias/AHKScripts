@@ -1,0 +1,47 @@
+; [Win+A] Tooggle always on top
+#a:: WinSet, Transparent, , A
+
+; [Win+WheelUP] Increase opacity
+!#+::
+    DetectHiddenWindows, on
+    WinGet, curtans, Transparent, A
+    if !curtans
+        curtrans = 255 
+    newtrans := curtrans + 5
+    if newtrans > 0
+    {
+        WinSet, Transparent, %newtrans% , A
+    } 
+else
+    {
+        WinSet, Transparent, OFF , A
+        WinSet, Transparent, 255 , A
+    } 
+return
+
+; [Win+WheelUP] Decrease opacity
+!#-::
+    DetectHiddenWindows, on
+    WinGet, curtans, Transparent, A
+    if ! curtans
+        curtrans = 255 
+    newtrans := curtrans - 5
+    if newtrans > 0
+    {
+        WinSet, Transparent, %newtrans% , A
+    } 
+return
+
+
+; [Win+o] set opacity 50%
+#o::
+    WinSet, Transparent, 127, A
+return
+
+; [Ctrl+Win+o] set opacity 50%
+^#o::
+    WinSet, Transparent, 255, A
+    WinSet, Transparent, OFF, A
+return
+
+
